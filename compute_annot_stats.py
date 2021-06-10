@@ -1,11 +1,7 @@
 import os
 import json
 import glob
-from itertools import groupby
-import operator
 import numpy as np
-import math
-import sys
 import collections
 import pandas as pd
 import matplotlib.pyplot as plt
