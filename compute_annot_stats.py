@@ -101,7 +101,13 @@ class compute_annot_stats():
         my_dict["class_weights"] = class_weight
         return my_dict
 
-#calling all above functions
+## Below two functions are the main function the user can call for computing statistics for coco and yolo based annotations
+
+#parameter
+    #file- A path to cocojson file
+# returns
+    # my_dict- A dictionary that contains statistics
+    # my_df- A dataframe that contains statistics
     def compute_stats_coco(self, file, plot=False):
         with open(file, encoding='utf-8', errors='ignore') as json_data:
             data = json.load(json_data, strict=False)
@@ -118,7 +124,11 @@ class compute_annot_stats():
         return my_dict, my_df
 
 
-#calling all above functions and exporting the results into pandas dataframe and dictionary
+#parameter
+    #file- A path to the directory that has textfiles
+# returns
+    # my_dict- A dictionary that contains statistics
+    # my_df- A dataframe that contains statistics
     def compute_stats_yolo(self, textdir, plot=False):
         my_dict=self.create_info_dict(*self.yolo_stat(textdir))
         my_df=pd.DataFrame(my_dict.items(), columns=["parameter", "value"])
@@ -131,6 +141,5 @@ class compute_annot_stats():
         return my_dict, my_df
 
 # data_path="C:/Research/cocofile.json"
-#
 # stat=compute_annot_stats()
 # stat.compute_stats_coco(data_path)
